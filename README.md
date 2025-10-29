@@ -135,18 +135,6 @@ DELETE /api/cities/:id
 
 ---
 
-## 🔒 Security
-
-**IMPORTANT:** This app requires an OpenWeather API key. 
-
-- ✅ The `.env` file is in `.gitignore` and will NOT be committed
-- ❌ NEVER hardcode API keys in source code
-- ⚠️ If you accidentally commit a key, regenerate it immediately at [OpenWeather](https://home.openweathermap.org/api_keys)
-
-The app will run without an API key, but weather data won't be displayed.
-
----
-
 ## 📝 License
 
 MIT License
