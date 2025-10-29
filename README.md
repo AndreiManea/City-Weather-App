@@ -41,8 +41,9 @@ pnpm prisma:push
 pnpm prisma:seed        # Optional: adds sample cities
 cd ../..
 
-# 3. (Optional) Add weather API key for live weather data
-echo "OPENWEATHER_API_KEY=your_key_here" > apps/server/.env
+# 3. Add weather API key for live weather data
+cp apps/server/.env.example apps/server/.env
+# Edit apps/server/.env and add your API key
 ```
 
 > Get a free API key at [OpenWeather](https://openweathermap.org/api)
@@ -131,6 +132,18 @@ DELETE /api/cities/:id
 ✅ Display country info (capital, region, population)  
 ✅ Beautiful responsive UI with Tailwind CSS  
 ✅ Fast development with hot reload
+
+---
+
+## 🔒 Security
+
+**IMPORTANT:** This app requires an OpenWeather API key. 
+
+- ✅ The `.env` file is in `.gitignore` and will NOT be committed
+- ❌ NEVER hardcode API keys in source code
+- ⚠️ If you accidentally commit a key, regenerate it immediately at [OpenWeather](https://home.openweathermap.org/api_keys)
+
+The app will run without an API key, but weather data won't be displayed.
 
 ---
 

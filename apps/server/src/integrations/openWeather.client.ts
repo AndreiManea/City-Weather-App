@@ -10,11 +10,15 @@ export class OpenWeatherClient {
 
   constructor(http?: AxiosInstance, apiKey?: string) {
     this.http = http || createHttpClient('https://api.openweathermap.org');
-    this.apiKey = env.OPENWEATHER_API_KEY || '8bb3098534f90f893bc9cce3392bb493';
+    this.apiKey = env.OPENWEATHER_API_KEY;
   }
 
   async getByCityAndCountry(city: string, countryCode2?: string): Promise<WeatherInfo | null> {
-    if (!this.apiKey || !countryCode2) return null;
+    if (!this.apiKey) {
+      console.warn('⚠️  OpenWeather API key not configured. Set OPENWEATHER_API_KEY in .env file.');
+      return null;
+    }
+    if (!countryCode2) return null;
     try {
       const data = await httpWithRetry<any>(this.http, {
         url: `/data/2.5/weather`,
